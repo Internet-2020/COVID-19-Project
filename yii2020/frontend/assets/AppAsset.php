@@ -22,6 +22,17 @@ class AppAsset extends AssetBundle
         'vendor/plugins/summernote/summernote.css',
         'assets/skin/default_skin/css/theme.css',
         'assets/admin-tools/admin-forms/css/admin-forms.css',
+        'assets/css/custom.css',
+        'assets/css/style.blue.css',
+        'assets/css/style.default.css',
+        'assets/css/style.green.css',
+        'assets/css/style.lightblue.css',
+        'assets/css/style.marsala.css',
+        'assets/css/style.pink.css',
+        'assets/css/style.red.css',
+        'assets/css/style.violet.css',
+        'vendor/bootstrap/css/bootstrap.min.css',
+        'vendor/font-awesome/css/font-awesome.min.css'
         
     ];
     public $js = [
