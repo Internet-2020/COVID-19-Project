@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web/statics';
     public $css = [
         //'css/site.css',
+        'assets/mycss.css',
         'vendor/plugins/summernote/summernote.css',
         'assets/skin/default_skin/css/theme.css',
         'assets/admin-tools/admin-forms/css/admin-forms.css',
@@ -32,7 +33,7 @@ class AppAsset extends AssetBundle
         'assets/css/style.red.css',
         'assets/css/style.violet.css',
         'vendor/bootstrap/css/bootstrap.min.css',
-        'vendor/font-awesome/css/font-awesome.min.css'
+        'vendor/font-awesome/css/font-awesome.min.css',
         
     ];
     public $js = [
