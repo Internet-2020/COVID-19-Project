@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Team:Internet-2020;
+ * Coding by Lishurui 1811485,20200514
+ * This is custom widget of the frontend MessageBox part
+ */
+
 namespace frontend\components;
 
 use yii\base\Widget;

@@ -1,8 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\ResendVerificationEmailForm;
-use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
@@ -10,15 +8,19 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use frontend\controllers\base\BaseController;
+use frontend\models\ResendVerificationEmailForm;
+use frontend\models\VerifyEmailForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\FeedForm;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     public $layout = "main_layout";
 
@@ -227,6 +229,21 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+ 
+    /**
+     * 留言添加
+     */
+    public function actionAddFeed()
+    {
+        $model = new FeedForm();
+        $model->content = Yii::$app->request->post('content');
+        if($model->validate()){
+            if($model->create()){
+                return json_encode(['status'=>true]);
+            }
+        }
+        return json_decode(['status'=>false,'msg'=>'发布失败！']);
     }
 
     // /**

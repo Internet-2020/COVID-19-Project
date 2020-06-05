@@ -1,4 +1,9 @@
 <?php
+/**
+ *Team:Internet-2020
+ *Coding by 姜欣妮，1811482,20200512
+ *后台 管理员 model
+ */
 
 namespace backend\models;
 
@@ -30,7 +35,7 @@ class Admin extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function tableName()
     {
-        return 'admin';
+        return '{{%admin}}';
     }
 
     /**

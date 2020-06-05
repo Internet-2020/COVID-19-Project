@@ -1,4 +1,15 @@
 <?php
+/**
+ *Team:Internet-2020
+ *Coding by 
+ *李姝睿，1811485
+ *周新星，1811526
+ *郑羽辰，1811524
+ *姜欣妮，1811482
+ *侯潇，1811481
+ *后台 页面布局 view层
+ */
+
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -22,6 +33,7 @@ AppAsset::register($this);
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="statics/assets/img/favicon.ico" type="image/x-icon">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -166,9 +178,6 @@ AppAsset::register($this);
             </form>
           </div>
         </div>
-        <div class="form-group mn br-t p15">
-          <a href="#" id="clearLocalStorage" class="btn btn-primary btn-block pb10 pt10">Clear LocalStorage</a>
-        </div>
       </div>
     </div>
   </div>
@@ -206,7 +215,7 @@ AppAsset::register($this);
         </li>
         <li class="dropdown menu-merge">
           <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-          	<img src="../statics/assets/img/avatars/1.jpg" alt="avatar" class="mw30 br64">
+          	<img src="../web/statics/assets/img/avatars/1.jpg" alt="avatar" class="mw30 br64">
           	<span class="hidden-xs pl15"> <?php
             if(!Yii::$app->user->isGuest)
                 echo Yii::$app->user->identity->username ?> </span>
@@ -218,20 +227,20 @@ AppAsset::register($this);
             <li class="dropdown-header clearfix">
             
               <div class="pull-left ml10">
-                <select id="user-status">
+                <!-- <select id="user-status"> -->
                   <optgroup label="Current Status:">
                     <option value="1-3" selected="selected">Online</option>
                   </optgroup>
-                </select>
+                <!-- </select> -->
               </div>
 
               <div class="pull-right mr10">
-                <select id="user-role">
+                <!-- <select id="user-role"> -->
                   <optgroup label="Logged in As:">
 
                     <option value="1-3" selected="selected">Admin</option>
                   </optgroup>
-                </select>
+                <!-- </select> -->
               </div>
             </li>
    
@@ -257,15 +266,14 @@ AppAsset::register($this);
           <div class="sidebar-widget author-widget">
             <div class="media">
               <a class="media-left" href="#">
-                <img src="../statics/assets/img/avatars/3.jpg" class="img-responsive">
+                <img src="../web/statics/assets/img/avatars/3.jpg" class="img-responsive">
               </a>
               <div class="media-body">
-                <div class="media-links">
-                   <a href="#" class="sidebar-menu-toggle">用户菜单-</a> <a href="<?php echo Url::to(['site/logout']) ?>" data-method="post">登出 </a>
-                </div>
                 <div class="media-author"><?php
                 if(!Yii::$app->user->isGuest)
                     echo Yii::$app->user->identity->username ?> </div>
+                <div class="media-links"> <a href="<?php echo Url::to(['site/logout']) ?>" data-method="post">登出 </a>
+                </div>
               </div>
             </div>
           </div>
@@ -300,92 +308,95 @@ AppAsset::register($this);
         <ul class="nav sidebar-menu">
          
           <li class="sidebar-label pt15">信息管理</li>
+          <!-- 加的 -->
           <li>
-            <a class="accordion-toggle" href="<?php echo Url::to(['department/index']) ?>">
+            <a class="accordion-toggle" href="<?php echo Url::to(['user/index']) ?>">
               <span class="glyphicon glyphicon-fire"></span>
-              <span class="sidebar-title">部门管理</span>
+              <span class="sidebar-title">用户管理</span>
               <span class="caret"></span>
             </a>
             <ul class="nav sub-nav">
               <li>
-                <a href="<?php echo Url::to(['department/index']) ?>">
-                  <span class="glyphicon glyphicon-book"></span> 部门列表</a>
+                <a href="<?php echo Url::to(['user/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 用户列表</a>
               </li>
               <li>
-                <a href="<?php echo Url::to(['department/create']) ?>">
-                  <span class="glyphicon glyphicon-book"></span> 新建部门</a>
+                <a href="<?php echo Url::to(['admin/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 管理员列表</a>
               </li>
             </ul>
           </li>
+
+          <li>
+            <a class="accordion-toggle" href="<?php echo Url::to(['firstlevelmessage/index']) ?>">
+              <span class="glyphicon glyphicon-fire"></span>
+              <span class="sidebar-title">留言管理</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="nav sub-nav">
+              <li>
+                <a href="<?php echo Url::to(['firstlevelmessage/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 一级留言列表</a>
+              </li>
+              <li>
+                <a href="<?php echo Url::to(['seclevelmessage/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 二级留言列表</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+
           <li>
             <a class="accordion-toggle" href="<?php echo Url::to(['batch/index']) ?>">
               <span class="glyphicon glyphicon-fire"></span>
-              <span class="sidebar-title">批次管理</span>
+              <span class="sidebar-title">新闻管理</span>
               <span class="caret"></span>
             </a>
             <ul class="nav sub-nav">
               <li>
-                <a href="<?php echo Url::to(['batch/index']) ?>">
-                  <span class="glyphicon glyphicon-book"></span> 批次列表</a>
+                <a href="<?php echo Url::to(['post/create']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 发布新闻</a>
               </li>
               <li>
-                <a href="<?php echo Url::to(['batch/create']) ?>">
-                  <span class="glyphicon glyphicon-book"></span> 新建批次</a>
+                <a href="<?php echo Url::to(['post/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 新闻列表</a>
               </li>
             </ul>
-          </li>
+          </li> 
+
           <li>
-            <a class="accordion-toggle" href="<?php echo Url::to(['level-index/index']) ?>">
+            <a class="accordion-toggle" href="<?php echo Url::to(['batch/index']) ?>">
               <span class="glyphicon glyphicon-fire"></span>
-              <span class="sidebar-title">等级评估管理</span>
+              <span class="sidebar-title">数据管理</span>
               <span class="caret"></span>
             </a>
             <ul class="nav sub-nav">
               <li>
-                <a href="<?php echo Url::to(['level-index/index','LevelIndexSearch[father_id]'=>0]) ?>">
-                  <span class="glyphicon glyphicon-book"></span> 数据列表</a>
+                <a href="<?php echo Url::to(['china-data/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 国内每日数据</a>
               </li>
               <li>
-                <a href="<?php echo Url::to(['level-index/create']) ?>">
-                  <span class="glyphicon glyphicon-book"></span> 录入数据</a>
+                <a href="<?php echo Url::to(['domestic-data/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 国内各省市数据</a>
               </li>
-
-              <!-- <li>
-                <a href="<?php echo Url::to(['input/upload']) ?>">
-                  <span class="glyphicon glyphicon-book"></span> 文件上传</a>
-              </li> -->
+              <li>
+                <a href="<?php echo Url::to(['foreign-current-data/index']) ?>">
+                  <span class="glyphicon glyphicon-book"></span> 世界数据</a>
+              </li>
             </ul>
-          </li>
-      
+          </li> 
 
-         
-          <!-- sidebar progress bars -->
-          <li class="sidebar-label pt25 pb10">系统状态</li>
-          <li class="sidebar-stat">
-            <a href="#projectOne" class="fs11">
-              <span class="fa fa-inbox text-info"></span>
-              <span class="sidebar-title text-muted">待定1</span>
-              <span class="pull-right mr20 text-muted">35%</span>
-              <div class="progress progress-bar-xs mh20 mb10">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 35%">
-                  <span class="sr-only">35% Complete</span>
-                </div>
-              </div>
+          <li>
+            <a href="<?php echo Url::to(['team/index']) ?>">
+              <span class="glyphicon glyphicon-fire"></span>
+              <span  class="sidebar-title">团队管理</span>
             </a>
           </li>
-          <li class="sidebar-stat">
-            <a href="#projectOne" class="fs11">
-              <span class="fa fa-dropbox text-warning"></span>
-              <span class="sidebar-title text-muted">待定2</span>
-              <span class="pull-right mr20 text-muted">58%</span>
-              <div class="progress progress-bar-xs mh20">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 58%">
-                  <span class="sr-only">58% Complete</span>
-                </div>
-              </div>
-            </a>
-          </li>
+          <!-- 自己加的结束 -->
+
         </ul>
+
+        
         <!-- End: Sidebar Menu -->
 
 	      <!-- Start: Sidebar Collapse Button -->
@@ -465,22 +476,7 @@ AppAsset::register($this);
      
         </div>
         <div class="topbar-right">
-          <!-- <div class="ib topbar-dropdown">
-            <label for="topbar-multiple" class="control-label pr10 fs11 text-muted">Reporting Period</label>
-            <select id="topbar-multiple" class="hidden">
-              <optgroup label="Filter By:">
-                <option value="1-1">Last 30 Days</option>
-                <option value="1-2" selected="selected">Last 60 Days</option>
-                <option value="1-3">Last Year</option>
-              </optgroup>
-            </select>
-          </div> -->
-          <div class="ml15 ib va-m" id="toggle_sidemenu_r">
-            <a href="#" class="pl5">
-              <i class="fa fa-sign-in fs22 text-primary"></i>
-              <span class="badge badge-hero badge-danger"></span>
-            </a>
-          </div>
+
         </div>
       </header>
       <!-- End: Topbar -->
@@ -495,71 +491,12 @@ AppAsset::register($this);
     </section>
 
     <!-- Start: Right Sidebar -->
-    <aside id="sidebar_right" class="nano affix">
-
-      <!-- Start: Sidebar Right Content -->
-      <div class="sidebar-right-content nano-content">
-
-        <div class="tab-block sidebar-block br-n">
-          <ul class="nav nav-tabs tabs-border nav-justified hidden">
-            <li class="active">
-              <a href="#sidebar-right-tab1" data-toggle="tab">Tab 1</a>
-            </li>
-            <li>
-              <a href="#sidebar-right-tab2" data-toggle="tab">Tab 2</a>
-            </li>
-            <li>
-              <a href="#sidebar-right-tab3" data-toggle="tab">Tab 3</a>
-            </li>
-          </ul>
-          <div class="tab-content br-n">
-            <div id="sidebar-right-tab1" class="tab-pane active">
-
-              <h5 class="title-divider text-muted mb20"> Server Statistics
-                <span class="pull-right"> 2013
-                  <i class="fa fa-caret-down ml5"></i>
-                </span>
-              </h5>
-              <div class="progress mh5">
-                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 44%">
-                  <span class="fs11">DB Request</span>
-                </div>
-              </div>
-
-
-              <h5 class="title-divider text-muted mt30 mb10">Traffic Margins</h5>
-              <div class="row">
-                <div class="col-xs-5">
-                  <h3 class="text-primary mn pl5">132</h3>
-                </div>
-                <div class="col-xs-7 text-right">
-                  <h3 class="text-success-dark mn">
-                    <i class="fa fa-caret-up"></i> 13.2% </h3>
-                </div>
-              </div>
-
-            </div>
-            <div id="sidebar-right-tab2" class="tab-pane"></div>
-            <div id="sidebar-right-tab3" class="tab-pane"></div>
-          </div>
-          <!-- end: .tab-content -->
-        </div>
-      </div>
-    </aside>
+    
     <!-- End: Right Sidebar -->
 
   </div>
   <!-- End: Main -->
 
-  <!-- Admin Dock Quick Compose Message -->
- <!--  <div class="quick-compose-form">
-    <form id="">
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-      <input type="text" class="form-control" id="inputSubject" placeholder="Subject">
-      <div class="summernote-quick">Compose your message here...</div>
-    </form>
-  </div>
- -->
 
 <footer class="footer">
     <div class="container">

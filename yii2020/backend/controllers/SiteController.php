@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\controllers;
 
 use Yii;
@@ -7,11 +8,12 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 //use common\models\LoginForm;
 use backend\models\LoginForm;
+use backend\controllers\base\BaseController;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     public $layout = "main_layout";
     /**
@@ -99,4 +101,14 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+    // /**
+    //  * Displays homepage.
+    //  *
+    //  * @return string
+    //  */
+    // public function actionCreate()
+    // {
+    //     return $this->render('create');
+    // }
 }

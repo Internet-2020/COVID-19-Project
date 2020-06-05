@@ -32,8 +32,8 @@ class AppAsset extends AssetBundle
         'assets/css/style.pink.css',
         'assets/css/style.red.css',
         'assets/css/style.violet.css',
-        'vendor/bootstrap/css/bootstrap.min.css',
-        'vendor/font-awesome/css/font-awesome.min.css',
+        //'vendor/bootstrap/css/bootstrap.min.css',
+        //'vendor/font-awesome/css/font-awesome.min.css'
         
     ];
     public $js = [
@@ -44,7 +44,8 @@ class AppAsset extends AssetBundle
         'assets/js/utility/utility.js',
         'assets/js/demo/demo.js',
         'assets/js/main.js',
-        
+        'assets/js/world.js',
+        'assets/js/site.js',
     ];
     public $depends = [
         /* bootstrap.js ������

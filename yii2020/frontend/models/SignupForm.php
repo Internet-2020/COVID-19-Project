@@ -1,4 +1,13 @@
 <?php
+
+/**
+ *Team:Internet-2020
+ *Coding by 姜欣妮，1811482,20200510
+ * 前台注册表单
+ */
+
+
+
 namespace frontend\models;
 
 use Yii;
@@ -13,7 +22,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-
+    public $rePassword;
+    public $verifyCode;
 
     /**
      * {@inheritdoc}
@@ -32,8 +42,11 @@ class SignupForm extends Model
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
 
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            [['password', 'rePassword'], 'required'],
+            [['password', 'rePassword'], 'string', 'min' => 6],
+            ['rePassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Two times the password is not consistent.'],
+
+            ['verifyCode', 'captcha']
         ];
     }
 

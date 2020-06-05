@@ -1,0 +1,11 @@
+/**
+ *Team:Internet-2020
+ *Coding by 
+ *周新星，1811526
+ *郑羽辰，1811524
+*/
+widgets中的组件是从yii中文网上获取的
+
+file_upload是图片上传组件
+tags是标签组件
+ueditor是文本编辑组件

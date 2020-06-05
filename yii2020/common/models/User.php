@@ -1,4 +1,11 @@
 <?php
+
+/**
+ *Team:Internet-2020
+ *Coding by 姜欣妮，1811482,20200513
+ *后台 用户 model
+ */
+
 namespace common\models;
 
 use Yii;
@@ -64,6 +71,26 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'username' => '姓名',
+            'password_hash' => '密码Hash',
+            'password_reset_token' => '重置密码',
+            'verification_token' => '验证',
+            'email' => '邮箱',
+            'auth_key' => '密钥',
+            'status' => '状态',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+        ];
+    }
+
 
     /**
      * {@inheritdoc}
